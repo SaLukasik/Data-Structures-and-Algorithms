@@ -80,10 +80,19 @@ void preorder(struct Node* root)
 
 struct Node* FindMin(struct Node* node)
 {
-	while(node->left!=NULL)
-		node = node->left;
-
-	return node;
+    if (node != NULL) {
+        while(node->left!=NULL)
+            node = node->left;
+    }
+    return node;
+}
+struct Node* FindMax(struct Node* node)
+{
+    if (node != NULL) {
+        while (node->right != NULL)
+            node = node->right;
+    }
+    return node;
 }
 
 struct Node* Delete(struct Node* root,int data)
@@ -107,14 +116,14 @@ struct Node* Delete(struct Node* root,int data)
 
 		else if(root->left!=NULL && root->right==NULL)
 		{
-			struct Node* temp = root->left;
+			struct Node* temp = root;
 			root = root->left;
 			free(temp);
 		}
 
 		else if(root->right!=NULL && root->left==NULL)
 		{
-			struct Node* temp = root->right;
+			struct Node* temp = root;
 			root = root->right;
 			free(temp);
 		}
